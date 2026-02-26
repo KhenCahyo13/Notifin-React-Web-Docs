@@ -1,0 +1,78 @@
+---
+title: Methods API
+description: Daftar method notifin untuk show, update, dan dismiss dialog.
+---
+
+# Methods API
+
+Import:
+
+```tsx
+import { notifin } from "@khencahyo13/notifin-react";
+```
+
+## Show Methods
+
+### `notifin(title, options?)`
+
+Menampilkan dialog tipe `default`.
+
+### `notifin.success(title, options?)`
+
+Dialog sukses.
+
+### `notifin.error(title, options?)`
+
+Dialog error.
+
+### `notifin.warning(title, options?)`
+
+Dialog warning.
+
+### `notifin.info(title, options?)`
+
+Dialog info.
+
+### `notifin.loading(title, options?)`
+
+Dialog loading.
+
+Catatan: loading non-dismissible secara default.
+
+## Semua show method mengembalikan `id: string`
+
+```tsx
+const id = notifin.loading("Uploading...");
+```
+
+## Update Method
+
+### `notifin.update(id, options)`
+
+Update dialog yang sudah muncul.
+
+```tsx
+const id = notifin.loading("Memproses...", { dismissible: false });
+
+setTimeout(() => {
+  notifin.update(id, {
+    type: "success",
+    title: "Selesai",
+    description: "Data sudah diproses.",
+    dismissible: true,
+    duration: 2000,
+  });
+}, 1500);
+```
+
+## Dismiss Method
+
+### `notifin.dismiss(id?)`
+
+- Dengan `id`: tutup dialog tertentu.
+- Tanpa `id`: tutup dialog aktif.
+
+```tsx
+notifin.dismiss();
+notifin.dismiss("custom-id");
+```

@@ -49,11 +49,7 @@ const HomeView: FC<HomeViewProps> = ({
                             </Link>
                         </Button>
                         <Button asChild variant="outline">
-                            <Link
-                                href={data.docsLink.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <Link href={data.docsLink.href}>
                                 {data.docsLink.label}
                             </Link>
                         </Button>

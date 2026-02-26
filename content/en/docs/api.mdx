@@ -1,0 +1,61 @@
+---
+title: Type Reference
+description: Key TypeScript types for Notifin.
+---
+
+# Type Reference
+
+### `NotifinType`
+
+```ts
+type NotifinType =
+  | "default"
+  | "error"
+  | "info"
+  | "loading"
+  | "success"
+  | "warning";
+```
+
+### `NotifinFn`
+
+```ts
+interface NotifinFn {
+  (title: string, options?: NotifinShowOptions): string;
+  success(title: string, options?: NotifinShowOptions): string;
+  error(title: string, options?: NotifinShowOptions): string;
+  warning(title: string, options?: NotifinShowOptions): string;
+  info(title: string, options?: NotifinShowOptions): string;
+  loading(title: string, options?: NotifinShowOptions): string;
+  update(id: string, options: NotifinUpdateOptions): void;
+  dismiss(id?: string): void;
+  promise<T>(promise: Promise<T>, messages: NotifinPromiseMessages<T>): Promise<T>;
+}
+```
+
+### `NotifinShowOptions`
+
+```ts
+interface NotifinShowOptions {
+  action?: NotifinAction;
+  allowEscapeClose?: boolean;
+  cancel?: NotifinAction;
+  description?: string;
+  dismissible?: boolean;
+  duration?: number;
+  id?: string;
+  onDismiss?: () => void;
+  title?: string;
+}
+```
+
+### `NotifinProps`
+
+```ts
+interface NotifinProps {
+  colorScheme?: "system" | "light" | "dark";
+  motion?: "subtle" | "slide" | "scale" | "bounce" | "none";
+  showQueueCount?: boolean;
+  theme?: NotifinThemeConfig;
+}
+```

@@ -1,0 +1,53 @@
+import type { Metadata } from "next";
+
+import { hasLocale } from "next-intl";
+import { importPage } from "nextra/pages";
+import { notFound } from "next/navigation";
+
+import { routing } from "@/i18n/routing";
+import { useMDXComponents as getMDXComponents } from "@/mdx-components";
+
+type DocsPageProps = {
+  params: Promise<{
+    locale: string;
+    mdxPath?: string[];
+  }>;
+};
+
+export async function generateMetadata(props: DocsPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  if (!hasLocale(routing.locales, params.locale)) {
+    notFound();
+  }
+
+  const mdxPath = params.mdxPath ?? [];
+  const { metadata } = await importPage(["docs", ...mdxPath], params.locale);
+
+  return metadata;
+}
+
+export default async function DocsPage(props: DocsPageProps) {
+  const params = await props.params;
+
+  if (!hasLocale(routing.locales, params.locale)) {
+    notFound();
+  }
+
+  const mdxPath = params.mdxPath ?? [];
+  const { default: MDXContent, metadata, toc } = await importPage(
+    ["docs", ...mdxPath],
+    params.locale,
+  );
+  const { wrapper: Wrapper } = getMDXComponents();
+
+  if (!Wrapper) {
+    return <MDXContent {...props} params={params} />;
+  }
+
+  return (
+    <Wrapper toc={toc} metadata={metadata}>
+      <MDXContent {...props} params={params} />
+    </Wrapper>
+  );
+}

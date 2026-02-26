@@ -1,0 +1,71 @@
+---
+title: Notifin Component
+description: Konfigurasi host Notifin di level aplikasi.
+---
+
+# Notifin Component
+
+`Notifin` adalah host renderer untuk semua dialog.
+
+```tsx
+import { Notifin } from "@khencahyo13/notifin-react";
+
+export function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Notifin />
+      {children}
+    </>
+  );
+}
+```
+
+## Props
+
+### `colorScheme`
+
+```tsx
+<Notifin colorScheme="system" />
+```
+
+Pilihan:
+
+- `"system"` (default)
+- `"light"`
+- `"dark"`
+
+### `motion`
+
+```tsx
+<Notifin motion="slide" />
+```
+
+Pilihan:
+
+- `"subtle"` (default)
+- `"slide"`
+- `"scale"`
+- `"bounce"`
+- `"none"`
+
+### `showQueueCount`
+
+```tsx
+<Notifin showQueueCount={false} />
+```
+
+Default `true`. Jika aktif, jumlah antrean akan ditampilkan saat ada pending dialog.
+
+### `theme`
+
+```tsx
+<Notifin
+  theme={{
+    dialogToneClasses: {
+      success: "border-emerald-300 bg-emerald-50 text-emerald-950",
+    },
+  }}
+/>
+```
+
+Detail lengkap ada di [Custom Theme](./custom-theme).

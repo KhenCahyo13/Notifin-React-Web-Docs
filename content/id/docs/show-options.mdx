@@ -1,0 +1,82 @@
+---
+title: Show Options
+description: Opsi yang bisa dipakai di notifin(...) dan notifin.<type>(...).
+---
+
+# Show Options
+
+Semua method `notifin(...)` dan `notifin.<type>(...)` menerima parameter:
+
+```ts
+notifin(title, options?)
+```
+
+## Field
+
+### `description?: string`
+
+Deskripsi tambahan di bawah judul.
+
+### `action?: { label: string; onClick?: () => void | Promise<void> }`
+
+Tombol aksi utama.
+
+### `cancel?: { label: string; onClick?: () => void | Promise<void> }`
+
+Tombol cancel.
+
+### `dismissible?: boolean`
+
+Boleh ditutup manual atau tidak.
+
+- Default: `true`
+- Khusus `notifin.loading(...)`: default `false`
+
+### `allowEscapeClose?: boolean`
+
+Mengizinkan close via keyboard `Esc`. Gunakan jika kamu memang ingin dialog bisa ditutup lewat escape.
+
+### `duration?: number`
+
+Auto-dismiss dalam milidetik.
+
+Contoh:
+
+```tsx
+notifin.success("Disimpan", { duration: 1500 });
+```
+
+### `id?: string`
+
+Set id manual untuk kebutuhan `update` atau `dismiss` terarah.
+
+### `onDismiss?: () => void`
+
+Callback saat dialog ditutup.
+
+### `title?: string`
+
+Field tambahan yang tersedia di type options. Untuk pemanggilan normal, judul utama tetap diambil dari argumen pertama function.
+
+## Contoh Lengkap
+
+```tsx
+notifin.warning("Yakin keluar?", {
+  description: "Perubahan yang belum disimpan akan hilang.",
+  dismissible: true,
+  allowEscapeClose: true,
+  duration: 10000,
+  action: {
+    label: "Keluar",
+    onClick: () => {
+      console.log("logout");
+    },
+  },
+  cancel: {
+    label: "Tetap di sini",
+  },
+  onDismiss: () => {
+    console.log("dialog ditutup");
+  },
+});
+```

@@ -1,0 +1,38 @@
+---
+title: Troubleshooting
+description: Common issues and fixes when using Notifin.
+---
+
+# Troubleshooting
+
+## Dialog does not appear
+
+Ensure `<Notifin />` is mounted at app root.
+
+```tsx
+<>
+  <Notifin />
+  {children}
+</>
+```
+
+## API called before host is ready
+
+Only call `notifin.*` after React has mounted and host exists.
+
+## ESC does not close dialog
+
+Set `allowEscapeClose: true` and keep `dismissible: true`.
+
+```tsx
+notifin.info("Press esc to close", {
+  dismissible: true,
+  allowEscapeClose: true,
+});
+```
+
+## Too many queued dialogs
+
+- Add `duration` for non-critical messages.
+- Use `notifin.update` instead of creating new dialogs.
+- Use `notifin.dismiss(id)` when flow is complete.

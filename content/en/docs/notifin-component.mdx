@@ -1,0 +1,71 @@
+---
+title: Notifin Component
+description: Configure the Notifin host at app level.
+---
+
+# Notifin Component
+
+`Notifin` is the host renderer for all dialogs.
+
+```tsx
+import { Notifin } from "@khencahyo13/notifin-react";
+
+export function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Notifin />
+      {children}
+    </>
+  );
+}
+```
+
+## Props
+
+### `colorScheme`
+
+```tsx
+<Notifin colorScheme="system" />
+```
+
+Options:
+
+- `"system"` (default)
+- `"light"`
+- `"dark"`
+
+### `motion`
+
+```tsx
+<Notifin motion="slide" />
+```
+
+Options:
+
+- `"subtle"` (default)
+- `"slide"`
+- `"scale"`
+- `"bounce"`
+- `"none"`
+
+### `showQueueCount`
+
+```tsx
+<Notifin showQueueCount={false} />
+```
+
+Default is `true`.
+
+### `theme`
+
+```tsx
+<Notifin
+  theme={{
+    dialogToneClasses: {
+      success: "border-emerald-300 bg-emerald-50 text-emerald-950",
+    },
+  }}
+/>
+```
+
+See [Custom Theme](./custom-theme) for full details.

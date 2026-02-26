@@ -1,0 +1,47 @@
+---
+title: Promise Helper
+description: Handle loading-success-error flow with notifin.promise.
+---
+
+# Promise Helper
+
+`notifin.promise` binds a Promise lifecycle to dialogs:
+
+1. Shows loading state.
+2. On resolve, shows success.
+3. On reject, shows error.
+
+## Basic
+
+```tsx
+await notifin.promise(saveProfile(), {
+  loading: "Saving profile...",
+  success: "Profile saved",
+  error: "Failed to save profile",
+});
+```
+
+## With Detailed Message Objects
+
+```tsx
+await notifin.promise(submitOrder(), {
+  loading: {
+    title: "Submitting order...",
+    description: "Please wait",
+  },
+  success: (data) => ({
+    title: "Order succeeded",
+    description: `Order ID: ${data.id}`,
+  }),
+  error: (err) => ({
+    title: "Order failed",
+    description: err instanceof Error ? err.message : "Unknown error",
+  }),
+});
+```
+
+## Message Types
+
+- `loading`: `string` or `NotifinShowOptions`
+- `success`: `string` or `(data) => string | NotifinShowOptions`
+- `error`: `string` or `(error) => string | NotifinShowOptions`

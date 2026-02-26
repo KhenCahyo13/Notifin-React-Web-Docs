@@ -1,0 +1,49 @@
+---
+title: Notifin React Docs
+description: Complete documentation for @khencahyo13/notifin-react.
+---
+
+# Notifin
+
+`@khencahyo13/notifin-react` is a function-first alert dialog library for React, built on top of Radix Alert Dialog.
+
+It is designed for high-attention confirmations and action feedback with a simple calling API.
+
+## Quick Start
+
+```tsx
+import { Notifin, notifin } from "@khencahyo13/notifin-react";
+
+export default function AppLayout() {
+  return (
+    <>
+      <Notifin />
+      <button
+        onClick={() =>
+          notifin.success("Profile updated", {
+            description: "Your changes have been saved.",
+          })
+        }
+      >
+        Save
+      </button>
+    </>
+  );
+}
+```
+
+## Documentation Map
+
+- **Getting Started**: install, host setup, and first call.
+- **Basic Usage**: day-to-day usage patterns.
+- **Notifin Component**: host props (`colorScheme`, `motion`, `theme`, etc).
+- **Show Options**: dialog options (`description`, `action`, `cancel`, etc).
+- **Methods API**: `notifin.*`, `update`, and `dismiss` methods.
+- **Promise Helper**: async lifecycle handling with `notifin.promise`.
+- **Custom Theme**: tone/scheme class overrides.
+- **Custom Icons**: replace default icons per type.
+- **Recipes**: practical implementation examples.
+- **Troubleshooting**: common issues and fixes.
+- **Type Reference**: key TypeScript types.
+
+Start with [Getting Started](./getting-started).

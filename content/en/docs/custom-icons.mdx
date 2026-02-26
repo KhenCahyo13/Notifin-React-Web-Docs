@@ -1,0 +1,54 @@
+---
+title: Custom Icons
+description: Replace default Notifin icons per dialog type.
+---
+
+# Custom Icons
+
+You can replace default icons through `theme.icons`.
+
+Each icon must be a React component with:
+
+```ts
+{ className?: string }
+```
+
+## SVG Example
+
+```tsx
+import { Notifin } from "@khencahyo13/notifin-react";
+
+function RocketIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M5 19c2.5 0 4.5-2 4.5-4.5v-1l5-5c2-2 4.5-2 5.5-2-.1 1-.1 3.5-2 5.5l-5 5h-1C9 17 7 19 7 21" />
+      <circle cx="14.5" cy="9.5" r="1.5" />
+    </svg>
+  );
+}
+
+<Notifin
+  theme={{
+    icons: {
+      success: RocketIcon,
+    },
+  }}
+/>;
+```
+
+## Icon Library Example
+
+```tsx
+import { CircleCheck, CircleX, Info } from "lucide-react";
+import { Notifin } from "@khencahyo13/notifin-react";
+
+<Notifin
+  theme={{
+    icons: {
+      success: CircleCheck,
+      error: CircleX,
+      info: Info,
+    },
+  }}
+/>;
+```

@@ -1,0 +1,56 @@
+---
+title: Getting Started
+description: Instalasi dan setup awal Notifin di aplikasi React.
+---
+
+# Getting Started
+
+## Install
+
+```bash
+pnpm add @khencahyo13/notifin-react
+# atau npm i @khencahyo13/notifin-react
+# atau yarn add @khencahyo13/notifin-react
+```
+
+Peer dependency:
+
+- `react >= 18`
+- `react-dom >= 18`
+
+## 1) Mount Host Sekali di Root
+
+`<Notifin />` harus dimount agar semua pemanggilan API `notifin.*` bisa dirender.
+
+```tsx
+import { Notifin } from "@khencahyo13/notifin-react";
+
+export default function AppLayout() {
+  return (
+    <>
+      <Notifin />
+      {/* your app */}
+    </>
+  );
+}
+```
+
+## 2) Trigger Notification dari Mana Saja
+
+```tsx
+import { notifin } from "@khencahyo13/notifin-react";
+
+notifin("Saved draft");
+notifin.success("Profile updated");
+notifin.error("Upload failed", {
+  description: "Please retry in a few seconds.",
+});
+```
+
+## 3) Pahami Perilaku Dasar
+
+- Dialog ditampilkan satu per satu (queued).
+- Memanggil API saat host belum dimount akan melempar error.
+- Style sudah diinject otomatis saat import package.
+
+Lanjut ke [Basic Usage](./basic-usage).

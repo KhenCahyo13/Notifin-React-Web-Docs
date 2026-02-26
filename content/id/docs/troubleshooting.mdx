@@ -1,0 +1,54 @@
+---
+title: Troubleshooting
+description: Solusi untuk masalah umum saat integrasi Notifin.
+---
+
+# Troubleshooting
+
+## Error: API dipanggil tapi dialog tidak muncul
+
+Pastikan `<Notifin />` sudah dimount di root aplikasi.
+
+```tsx
+<>
+  <Notifin />
+  {children}
+</>
+```
+
+## Error: Memanggil `notifin.*` sebelum host ready
+
+Panggil API hanya setelah komponen React sudah mounted dan host tersedia.
+
+## Styling terlihat tidak sesuai
+
+Checklist:
+
+- Tidak ada CSS global yang menimpa class `.nf-*`.
+- Jika override theme, pastikan class valid dan tidak typo.
+- Uji di light/dark jika pakai `colorScheme="system"`.
+
+## Dialog tidak bisa ditutup dengan ESC
+
+Aktifkan `allowEscapeClose: true` dan pastikan dialog `dismissible: true`.
+
+```tsx
+notifin.info("Press esc to close", {
+  dismissible: true,
+  allowEscapeClose: true,
+});
+```
+
+## Queue terasa menumpuk
+
+Gunakan pattern berikut:
+
+- Tambahkan `duration` untuk pesan non-critical.
+- Gunakan `notifin.update` agar tidak membuat dialog baru.
+- Gunakan `notifin.dismiss(id)` saat flow selesai.
+
+## Animasi ingin dimatikan total
+
+```tsx
+<Notifin motion="none" />
+```

@@ -1,0 +1,65 @@
+---
+title: Basic Usage
+description: Daily usage patterns for Notifin.
+---
+
+# Basic Usage
+
+## Notification Types
+
+Notifin provides 6 types:
+
+- `default`
+- `success`
+- `error`
+- `warning`
+- `info`
+- `loading`
+
+```tsx
+import { notifin } from "@khencahyo13/notifin-react";
+
+notifin("Default message");
+notifin.success("Data saved");
+notifin.error("Request failed");
+notifin.warning("This action is risky");
+notifin.info("New update available");
+notifin.loading("Preparing process...");
+```
+
+## With Description
+
+```tsx
+notifin.info("Scheduled maintenance tonight", {
+  description: "Service will restart at 11:00 PM.",
+});
+```
+
+## With Action and Cancel Buttons
+
+```tsx
+notifin.warning("Delete this item?", {
+  description: "This action cannot be undone.",
+  action: {
+    label: "Delete",
+    onClick: () => {
+      console.log("delete");
+    },
+  },
+  cancel: {
+    label: "Cancel",
+  },
+});
+```
+
+## Auto Dismiss
+
+```tsx
+notifin.success("Saved successfully", {
+  duration: 2000,
+});
+```
+
+If `duration` is omitted, the dialog will not auto-close.
+
+Continue to [Notifin Component](./notifin-component) and [Show Options](./show-options).

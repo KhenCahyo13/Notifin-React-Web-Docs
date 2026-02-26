@@ -1,0 +1,67 @@
+---
+title: Basic Usage
+description: Pola penggunaan Notifin untuk kebutuhan sehari-hari.
+---
+
+# Basic Usage
+
+## Tipe Notification
+
+Notifin punya 6 tipe:
+
+- `default`
+- `success`
+- `error`
+- `warning`
+- `info`
+- `loading`
+
+Contoh:
+
+```tsx
+import { notifin } from "@khencahyo13/notifin-react";
+
+notifin("Default message");
+notifin.success("Data tersimpan");
+notifin.error("Request gagal");
+notifin.warning("Aksi ini berisiko");
+notifin.info("Ada update baru");
+notifin.loading("Mempersiapkan proses...");
+```
+
+## Dengan Deskripsi
+
+```tsx
+notifin.info("Maintenance malam ini", {
+  description: "Layanan akan restart pukul 23:00 WIB.",
+});
+```
+
+## Dengan Tombol Action dan Cancel
+
+```tsx
+notifin.warning("Hapus item ini?", {
+  description: "Aksi ini tidak bisa dibatalkan.",
+  action: {
+    label: "Hapus",
+    onClick: () => {
+      console.log("hapus");
+    },
+  },
+  cancel: {
+    label: "Batal",
+  },
+});
+```
+
+## Auto Dismiss
+
+```tsx
+notifin.success("Berhasil disimpan", {
+  duration: 2000,
+});
+```
+
+Jika `duration` tidak diisi, dialog tidak auto-close.
+
+Lanjut ke [Notifin Component](./notifin-component) dan [Show Options](./show-options).

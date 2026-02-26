@@ -1,0 +1,76 @@
+---
+title: Methods API
+description: notifin methods for show, update, and dismiss.
+---
+
+# Methods API
+
+Import:
+
+```tsx
+import { notifin } from "@khencahyo13/notifin-react";
+```
+
+## Show Methods
+
+### `notifin(title, options?)`
+
+Shows a `default` dialog.
+
+### `notifin.success(title, options?)`
+
+Shows a success dialog.
+
+### `notifin.error(title, options?)`
+
+Shows an error dialog.
+
+### `notifin.warning(title, options?)`
+
+Shows a warning dialog.
+
+### `notifin.info(title, options?)`
+
+Shows an info dialog.
+
+### `notifin.loading(title, options?)`
+
+Shows a loading dialog (non-dismissible by default).
+
+All show methods return an `id: string`.
+
+```tsx
+const id = notifin.loading("Uploading...");
+```
+
+## Update Method
+
+### `notifin.update(id, options)`
+
+Updates an existing dialog.
+
+```tsx
+const id = notifin.loading("Processing...", { dismissible: false });
+
+setTimeout(() => {
+  notifin.update(id, {
+    type: "success",
+    title: "Done",
+    description: "Data processed successfully.",
+    dismissible: true,
+    duration: 2000,
+  });
+}, 1500);
+```
+
+## Dismiss Method
+
+### `notifin.dismiss(id?)`
+
+- With `id`: closes a specific dialog.
+- Without `id`: closes current active dialog.
+
+```tsx
+notifin.dismiss();
+notifin.dismiss("custom-id");
+```

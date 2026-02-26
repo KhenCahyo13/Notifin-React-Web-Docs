@@ -1,0 +1,56 @@
+---
+title: Getting Started
+description: Install and set up Notifin in your React app.
+---
+
+# Getting Started
+
+## Install
+
+```bash
+pnpm add @khencahyo13/notifin-react
+# or npm i @khencahyo13/notifin-react
+# or yarn add @khencahyo13/notifin-react
+```
+
+Peer dependencies:
+
+- `react >= 18`
+- `react-dom >= 18`
+
+## 1) Mount Host Once at App Root
+
+`<Notifin />` must be mounted so every `notifin.*` call can render.
+
+```tsx
+import { Notifin } from "@khencahyo13/notifin-react";
+
+export default function AppLayout() {
+  return (
+    <>
+      <Notifin />
+      {/* your app */}
+    </>
+  );
+}
+```
+
+## 2) Trigger Notifications Anywhere
+
+```tsx
+import { notifin } from "@khencahyo13/notifin-react";
+
+notifin("Saved draft");
+notifin.success("Profile updated");
+notifin.error("Upload failed", {
+  description: "Please retry in a few seconds.",
+});
+```
+
+## 3) Understand Default Behavior
+
+- Dialogs are queued and shown one by one.
+- Calling API methods without mounted host throws an error.
+- Styles are automatically injected when importing the package.
+
+Continue to [Basic Usage](./basic-usage).

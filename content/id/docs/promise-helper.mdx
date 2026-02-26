@@ -1,0 +1,56 @@
+---
+title: Promise Helper
+description: Kelola loading-success-error flow async dengan notifin.promise.
+---
+
+# Promise Helper
+
+`notifin.promise` mengikat lifecycle Promise ke dialog otomatis:
+
+1. Muncul state loading.
+2. Jika resolve -> tampil success.
+3. Jika reject -> tampil error.
+
+## Basic
+
+```tsx
+await notifin.promise(saveProfile(), {
+  loading: "Menyimpan profile...",
+  success: "Profile tersimpan",
+  error: "Gagal menyimpan profile",
+});
+```
+
+## Dengan Detail Message Object
+
+```tsx
+await notifin.promise(submitOrder(), {
+  loading: {
+    title: "Submit order...",
+    description: "Mohon tunggu sebentar",
+  },
+  success: (data) => ({
+    title: "Order berhasil",
+    description: `Order ID: ${data.id}`,
+  }),
+  error: (err) => ({
+    title: "Order gagal",
+    description: err instanceof Error ? err.message : "Unknown error",
+  }),
+});
+```
+
+## Tipe Pesan
+
+- `loading`: `string` atau `NotifinShowOptions`
+- `success`: `string` atau function `(data) => string | NotifinShowOptions`
+- `error`: `string` atau function `(error) => string | NotifinShowOptions`
+
+## Kapan Pakai
+
+- Submit form
+- Save draft
+- Upload file
+- Delete resource
+
+Jika butuh kontrol penuh manual, gunakan kombinasi `loading -> update`.

@@ -1,0 +1,80 @@
+---
+title: Show Options
+description: Options for notifin(...) and notifin.<type>(...).
+---
+
+# Show Options
+
+All `notifin(...)` and `notifin.<type>(...)` methods accept:
+
+```ts
+notifin(title, options?)
+```
+
+## Fields
+
+### `description?: string`
+
+Additional message below the title.
+
+### `action?: { label: string; onClick?: () => void | Promise<void> }`
+
+Primary action button.
+
+### `cancel?: { label: string; onClick?: () => void | Promise<void> }`
+
+Cancel button.
+
+### `dismissible?: boolean`
+
+Whether the dialog can be closed manually.
+
+- Default: `true`
+- For `notifin.loading(...)`: default is `false`
+
+### `allowEscapeClose?: boolean`
+
+Allows `Esc` key to close dialog.
+
+### `duration?: number`
+
+Auto-dismiss timeout in milliseconds.
+
+```tsx
+notifin.success("Saved", { duration: 1500 });
+```
+
+### `id?: string`
+
+Manual id for targeted `update` / `dismiss`.
+
+### `onDismiss?: () => void`
+
+Callback when dialog closes.
+
+### `title?: string`
+
+Additional title field in options type. For normal calls, main title still comes from first argument.
+
+## Full Example
+
+```tsx
+notifin.warning("Leave now?", {
+  description: "Unsaved changes will be lost.",
+  dismissible: true,
+  allowEscapeClose: true,
+  duration: 10000,
+  action: {
+    label: "Leave",
+    onClick: () => {
+      console.log("logout");
+    },
+  },
+  cancel: {
+    label: "Stay",
+  },
+  onDismiss: () => {
+    console.log("dialog closed");
+  },
+});
+```
