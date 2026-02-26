@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
 
+import AppThemeProvider from '@/components/theme-provider';
 import { siteConfig } from '@/lib/seo';
 import './globals.css';
 
@@ -80,7 +81,7 @@ export default async function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                {children}
+                <AppThemeProvider>{children}</AppThemeProvider>
             </body>
         </html>
     );

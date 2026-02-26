@@ -1,7 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { useTheme } from 'next-themes';
 
 import { notifin } from '@khencahyo13/notifin-react';
 
@@ -9,19 +10,13 @@ import type { AppLocale } from '@/i18n/routing';
 import { getHomeData } from '@/pages/home/data';
 import HomeView from '@/pages/home/view';
 
-const THEME_KEY = 'notifin-home-theme';
-
 const Home = ({ locale }: { locale: AppLocale }) => {
     const homeData = getHomeData(locale);
     const isId = locale === 'id';
     const router = useRouter();
     const pathname = usePathname();
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
-
-    useEffect(() => {
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-        localStorage.setItem(THEME_KEY, theme);
-    }, [theme]);
+    const { resolvedTheme, setTheme } = useTheme();
+    const theme: 'light' | 'dark' = resolvedTheme === 'dark' ? 'dark' : 'light';
 
     const showPromiseDemo = useCallback(async () => {
         await notifin.promise(
@@ -62,12 +57,12 @@ const Home = ({ locale }: { locale: AppLocale }) => {
     }, [isId]);
 
     const toggleTheme = useCallback(() => {
-        setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
-    }, []);
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+    }, [setTheme, theme]);
 
     const toggleLocale = useCallback(() => {
         const nextLocale = locale === 'id' ? 'en' : 'id';
-        const nextPath = pathname.replace(/^\/(id|en)(?=\/|$)/, `/${nextLocale}`);
+        const nextPath = pathname?.replace(/^\/(id|en)(?=\/|$)/, `/${nextLocale}`);
 
         router.push(nextPath || `/${nextLocale}`);
     }, [locale, pathname, router]);
