@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
+import { Head as NextraHead } from 'nextra/components';
 
 import AppThemeProvider from '@/components/theme-provider';
 import { siteConfig } from '@/lib/seo';
@@ -78,6 +79,17 @@ export default async function RootLayout({
 
     return (
         <html lang={locale} suppressHydrationWarning>
+            <NextraHead
+                color={{
+                    hue: { light: 205, dark: 205 },
+                    saturation: { light: 92, dark: 92 },
+                    lightness: { light: 44, dark: 60 },
+                }}
+                backgroundColor={{
+                    light: 'rgb(250,250,250)',
+                    dark: 'rgb(17,17,17)',
+                }}
+            />
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >

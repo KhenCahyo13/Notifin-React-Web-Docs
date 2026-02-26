@@ -111,21 +111,21 @@ const HomeView: FC<HomeViewProps> = ({
                 ))}
             </section>
 
-            <section className="grid gap-6 md:grid-cols-[1.2fr_1fr]">
-                <Card>
+            <section className="grid min-w-0 gap-6 md:grid-cols-[1.2fr_1fr]">
+                <Card className="min-w-0">
                     <CardHeader>
                         <CardDescription className="text-[12px] font-semibold tracking-[0.14em] uppercase">
                             {data.quickStartLabel}
                         </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                        <pre className="overflow-x-auto text-xs leading-relaxed md:text-sm">
+                    <CardContent className="min-w-0">
+                        <pre className="overflow-x-auto whitespace-pre-wrap break-words text-xs leading-relaxed md:text-sm">
                             <code>{data.usageSnippet}</code>
                         </pre>
                     </CardContent>
                 </Card>
 
-                <Card className="h-fit">
+                <Card className="h-fit min-w-0">
                     <CardHeader>
                         <CardDescription className="text-[12px] font-semibold tracking-[0.14em] uppercase">
                             {data.demoLabel}

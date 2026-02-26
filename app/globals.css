@@ -124,3 +124,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .nextra-sidebar-container a[aria-current="page"] {
+    background-color: rgb(15 23 42 / 8%) !important;
+    color: rgb(15 23 42) !important;
+  }
+
+  .dark .nextra-sidebar-container a[aria-current="page"] {
+    background-color: rgb(148 163 184 / 22%) !important;
+    color: rgb(226 232 240) !important;
+  }
+}
