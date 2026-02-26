@@ -1,0 +1,47 @@
+import type { HomeData } from "@/pages/home/types";
+
+export const homeData: HomeData = {
+    badge: "@khencahyo13/notifin",
+    headline: "Alert dialog React yang cepat, tegas, dan mudah dipanggil.",
+    subheadline:
+        "Halaman ini menampilkan gambaran singkat Notifin, sementara referensi API dan tutorial lengkap tersedia di Docs.",
+    packageLink: {
+        href: "https://www.npmjs.com/package/@khencahyo13/notifin",
+        label: "Lihat Package",
+    },
+    docsLink: {
+        href: "https://github.com/KhenCahyo13/Notifin#readme",
+        label: "Buka Docs (README)",
+    },
+    features: [
+        {
+            title: "Function-first API",
+            description:
+                "Panggil notif dari mana saja dengan satu baris, tanpa setup rumit.",
+        },
+        {
+            title: "Theme & Motion Ready",
+            description:
+                "Mendukung dark/light scheme, motion preset, dan override tampilan.",
+        },
+        {
+            title: "Queue + Promise Helper",
+            description:
+                "Kelola antrean dialog dan ikat state async lewat notifin.promise().",
+        },
+    ],
+    usageSnippet: `import { Notifin, notifin } from "@khencahyo13/notifin";
+
+export default function App() {
+  return (
+    <>
+      <Notifin motion="subtle" colorScheme="system" />
+      <button onClick={() => notifin.success("Profile updated")}>
+        Trigger
+      </button>
+    </>
+  );
+}`,
+    quickStartLabel: "Quick Start",
+    demoLabel: "Live Demo",
+};
