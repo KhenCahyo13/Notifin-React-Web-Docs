@@ -1,22 +1,39 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { useTheme } from 'next-themes';
 
 import { notifin } from '@khencahyo13/notifin-react';
 
 import type { AppLocale } from '@/i18n/routing';
-import { getHomeData } from '@/pages/home/data';
-import HomeView from '@/pages/home/view';
+import { getHomeData } from '@/features/home/data';
+import HomeView from '@/features/home/view';
 
 const Home = ({ locale }: { locale: AppLocale }) => {
     const homeData = getHomeData(locale);
     const isId = locale === 'id';
     const router = useRouter();
     const pathname = usePathname();
-    const { resolvedTheme, setTheme } = useTheme();
-    const theme: 'light' | 'dark' = resolvedTheme === 'dark' ? 'dark' : 'light';
+    const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+        if (typeof window === 'undefined') {
+            return 'light';
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)')
+            .matches
+            ? 'dark'
+            : 'light';
+
+        return savedTheme === 'dark' || savedTheme === 'light'
+            ? savedTheme
+            : preferredTheme;
+    });
+
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
     const showPromiseDemo = useCallback(async () => {
         await notifin.promise(
@@ -57,8 +74,12 @@ const Home = ({ locale }: { locale: AppLocale }) => {
     }, [isId]);
 
     const toggleTheme = useCallback(() => {
-        setTheme(theme === 'dark' ? 'light' : 'dark');
-    }, [setTheme, theme]);
+        const nextTheme = theme === 'dark' ? 'light' : 'dark';
+
+        setTheme(nextTheme);
+        localStorage.setItem('theme', nextTheme);
+        document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+    }, [theme]);
 
     const toggleLocale = useCallback(() => {
         const nextLocale = locale === 'id' ? 'en' : 'id';

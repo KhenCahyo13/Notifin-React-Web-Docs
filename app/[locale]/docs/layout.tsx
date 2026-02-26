@@ -22,13 +22,7 @@ export default async function DocsLayout({
         notFound();
     }
 
-    let pageMap;
-
-    try {
-        pageMap = await getPageMap(`/${locale}/docs`);
-    } catch {
-        pageMap = await getPageMap('/docs');
-    }
+    const pageMap = await getPageMap(`/${locale}/docs`);
 
     return (
         <Layout

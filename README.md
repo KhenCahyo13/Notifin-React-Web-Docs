@@ -67,10 +67,9 @@ content/
   id/docs/*                 # Indonesian docs content
   en/docs/*                 # English docs content
 
-pages/home/
+features/home/
   index.tsx                 # Container (logic)
   view.tsx                  # Presentational UI
-  data.ts                   # Locale data
 ```
 
 ## Scripts

@@ -16,11 +16,7 @@ type DocsPageProps = {
 };
 
 async function loadDocsPage(locale: string, mdxPath: string[]) {
-    try {
-        return await importPage(['docs', ...mdxPath], locale);
-    } catch {
-        return importPage(['docs', ...mdxPath]);
-    }
+    return importPage([locale, 'docs', ...mdxPath]);
 }
 
 export async function generateMetadata(
@@ -67,11 +63,8 @@ export default async function DocsPage(props: DocsPageProps) {
     }
 
     const mdxPath = params.mdxPath ?? [];
-    const {
-        default: MDXContent,
-        metadata,
-        toc,
-    } = await loadDocsPage(params.locale, mdxPath);
+    const result = await loadDocsPage(params.locale, mdxPath);
+    const { default: MDXContent, ...wrapperProps } = result;
     const { wrapper: Wrapper } = getMDXComponents();
 
     if (!Wrapper) {
@@ -79,7 +72,7 @@ export default async function DocsPage(props: DocsPageProps) {
     }
 
     return (
-        <Wrapper toc={toc} metadata={metadata}>
+        <Wrapper {...wrapperProps}>
             <MDXContent {...props} params={params} />
         </Wrapper>
     );

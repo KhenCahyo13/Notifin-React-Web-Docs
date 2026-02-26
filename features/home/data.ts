@@ -1,5 +1,5 @@
 import type { AppLocale } from '@/i18n/routing';
-import type { HomeData } from '@/pages/home/types';
+import type { HomeData } from '@/features/home/types';
 
 const usageSnippet = `import { Notifin, notifin } from "@khencahyo13/notifin-react";
 

@@ -10,11 +10,6 @@ const withNextra = nextra({
     },
 });
 
-const nextConfig: NextConfig = {
-    i18n: {
-        locales: ['id', 'en'],
-        defaultLocale: 'id',
-    },
-};
+const nextConfig: NextConfig = {};
 
 export default withNextra(withNextIntl(nextConfig));

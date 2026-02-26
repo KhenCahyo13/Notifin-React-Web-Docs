@@ -1,4 +1,4 @@
-import Home from '@/pages/home';
+import Home from '@/features/home';
 import type { Metadata } from 'next';
 import type { AppLocale } from '@/i18n/routing';
 import { getAbsoluteUrl, siteConfig } from '@/lib/seo';

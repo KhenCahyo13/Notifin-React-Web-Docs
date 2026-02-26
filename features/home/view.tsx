@@ -12,7 +12,7 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
-import type { HomeViewProps } from '@/pages/home/types';
+import type { HomeViewProps } from '@/features/home/types';
 import Image from 'next/image';
 import { FC, memo } from 'react';
 import Link from 'next/link';
