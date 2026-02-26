@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { hasLocale } from 'next-intl';
+import Image from 'next/image';
 import { getPageMap } from 'nextra/page-map';
 import { Layout, Navbar } from 'nextra-theme-docs';
 import { notFound } from 'next/navigation';
@@ -30,13 +31,24 @@ export default async function DocsLayout({
             navbar={
                 <Navbar
                     logo={
-                        <p className="font-semibold">
-                            Notifin React
-                            <span className="text-sm text-muted-foreground">
-                                {' '}
-                                by Khen Cahyo
-                            </span>
-                        </p>
+                        <span className="inline-flex items-center">
+                            <Image
+                                src="/notifin-mark-light.svg"
+                                alt="Notifin React"
+                                width={30}
+                                height={30}
+                                className="dark:hidden"
+                                priority
+                            />
+                            <Image
+                                src="/notifin-mark-dark.svg"
+                                alt="Notifin React"
+                                width={30}
+                                height={30}
+                                className="hidden dark:block"
+                                priority
+                            />
+                        </span>
                     }
                     projectLink="https://github.com/KhenCahyo13/Notifin"
                 />

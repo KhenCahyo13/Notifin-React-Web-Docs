@@ -12,6 +12,7 @@ import {
     CardTitle,
 } from '@/components/ui/card';
 import type { HomeViewProps } from '@/pages/home/types';
+import Image from 'next/image';
 import { FC, memo } from 'react';
 import Link from 'next/link';
 
@@ -32,6 +33,20 @@ const HomeView: FC<HomeViewProps> = ({
                             variant="outline"
                             className="uppercase text-muted-foreground"
                         >
+                            <Image
+                                src="/notifin-mark-light.svg"
+                                alt={data.badge}
+                                width={16}
+                                height={16}
+                                className="mr-1 inline-block dark:hidden"
+                            />
+                            <Image
+                                src="/notifin-mark-dark.svg"
+                                alt={data.badge}
+                                width={16}
+                                height={16}
+                                className="mr-1 hidden dark:inline-block"
+                            />
                             {data.badge}
                         </Badge>
                         <CardTitle className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-neutral-900 md:text-5xl">
