@@ -5,6 +5,7 @@ import { importPage } from "nextra/pages";
 import { notFound } from "next/navigation";
 
 import { routing } from "@/i18n/routing";
+import { getAbsoluteUrl } from "@/lib/seo";
 import { useMDXComponents as getMDXComponents } from "@/mdx-components";
 
 type DocsPageProps = {
@@ -22,9 +23,30 @@ export async function generateMetadata(props: DocsPageProps): Promise<Metadata> 
   }
 
   const mdxPath = params.mdxPath ?? [];
+  const path = mdxPath.length
+    ? `/${params.locale}/docs/${mdxPath.join("/")}`
+    : `/${params.locale}/docs`;
   const { metadata } = await importPage(["docs", ...mdxPath], params.locale);
+  const ogLocale = params.locale === "id" ? "id_ID" : "en_US";
 
-  return metadata;
+  return {
+    ...metadata,
+    alternates: {
+      ...(metadata.alternates ?? {}),
+      canonical: path,
+      languages: {
+        id: "/id/docs",
+        en: "/en/docs",
+        "x-default": "/id/docs",
+      },
+    },
+    openGraph: {
+      ...(metadata.openGraph ?? {}),
+      type: "article",
+      url: getAbsoluteUrl(path),
+      locale: ogLocale,
+    },
+  };
 }
 
 export default async function DocsPage(props: DocsPageProps) {
