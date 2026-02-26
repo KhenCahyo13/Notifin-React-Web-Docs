@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { getPageMap } from 'nextra/page-map';
-import { Footer, Layout, Navbar } from 'nextra-theme-docs';
+import { Layout, Navbar } from 'nextra-theme-docs';
 import 'nextra-theme-docs/style.css';
 
 export default async function DocsLayout({
@@ -18,9 +18,12 @@ export default async function DocsLayout({
             navbar={
                 <Navbar
                     logo={
-                        <p className='font-semibold'>
+                        <p className="font-semibold">
                             Notifin
-                            <span className='text-sm text-muted-foreground'> by Khen Cahyo</span>
+                            <span className="text-sm text-muted-foreground">
+                                {' '}
+                                by Khen Cahyo
+                            </span>
                         </p>
                     }
                     projectLink="https://github.com/KhenCahyo13/Notifin"
