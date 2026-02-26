@@ -1,81 +1,83 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { getLocale } from "next-intl/server";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import { getLocale } from 'next-intl/server';
 
-import { siteConfig } from "@/lib/seo";
-import "./globals.css";
+import { siteConfig } from '@/lib/seo';
+import './globals.css';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+    variable: '--font-geist-sans',
+    subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+    variable: '--font-geist-mono',
+    subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  applicationName: siteConfig.name,
-  keywords: [
-    "notifin",
-    "alert",
-    "react",
-    "react alert dialog",
-    "notification",
-    "radix",
-    "typescript",
-  ],
-  alternates: {
-    languages: {
-      id: "/id",
-      en: "/en",
-      "x-default": "/id",
+    metadataBase: new URL(siteConfig.url),
+    title: {
+        default: siteConfig.name,
+        template: `%s | ${siteConfig.name}`,
     },
-  },
-  openGraph: {
-    type: "website",
-    siteName: siteConfig.name,
-    title: siteConfig.name,
     description: siteConfig.description,
-    url: siteConfig.url,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
+    applicationName: siteConfig.name,
+    keywords: [
+        'notifin',
+        'alert',
+        'react',
+        'react alert dialog',
+        'notification',
+        'radix',
+        'typescript',
+    ],
+    alternates: {
+        languages: {
+            id: '/id',
+            en: '/en',
+            'x-default': '/id',
+        },
     },
-  },
+    openGraph: {
+        type: 'website',
+        siteName: siteConfig.name,
+        title: siteConfig.name,
+        description: siteConfig.description,
+        url: siteConfig.url,
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: siteConfig.name,
+        description: siteConfig.description,
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+            'max-video-preview': -1,
+        },
+    },
 };
 
 export default async function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
+    const locale = await getLocale();
 
-  return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
-      </body>
-    </html>
-  );
+    return (
+        <html lang={locale} suppressHydrationWarning>
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            >
+                {children}
+            </body>
+        </html>
+    );
 }
