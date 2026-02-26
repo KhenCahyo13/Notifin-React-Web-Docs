@@ -1,0 +1,27 @@
+---
+title: API Reference
+description: Ringkasan API utama Notifin.
+---
+
+# API Reference
+
+## `notifin`
+
+- `notifin(title, options?)`
+- `notifin.success(title, options?)`
+- `notifin.error(title, options?)`
+- `notifin.warning(title, options?)`
+- `notifin.info(title, options?)`
+- `notifin.loading(title, options?)`
+- `notifin.update(id, options)`
+- `notifin.dismiss(id?)`
+- `notifin.promise(promise, messages)`
+
+## `Notifin` Props
+
+- `colorScheme?: "system" | "light" | "dark"`
+- `motion?: "subtle" | "slide" | "scale" | "bounce" | "none"`
+- `showQueueCount?: boolean`
+- `theme?: NotifinThemeConfig`
+
+Untuk contoh lanjutan, cek README package atau dokumentasi lanjutan yang akan ditambahkan di halaman ini.

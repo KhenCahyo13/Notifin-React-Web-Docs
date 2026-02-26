@@ -9,10 +9,10 @@ export const homeData: HomeData = {
         href: "https://www.npmjs.com/package/@khencahyo13/notifin",
         label: "Lihat Package",
     },
-    docsLink: {
-        href: "https://github.com/KhenCahyo13/Notifin#readme",
-        label: "Buka Docs (README)",
-    },
+  docsLink: {
+    href: "/docs",
+    label: "Buka Docs",
+  },
     features: [
         {
             title: "Function-first API",

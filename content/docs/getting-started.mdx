@@ -1,0 +1,37 @@
+---
+title: Getting Started
+description: Instalasi dan setup awal Notifin di aplikasi React.
+---
+
+# Getting Started
+
+## Install
+
+```bash
+pnpm add @khencahyo13/notifin
+```
+
+## Mount Host
+
+```tsx
+import { Notifin } from "@khencahyo13/notifin";
+
+export default function AppLayout() {
+  return (
+    <>
+      <Notifin />
+      {/* your app */}
+    </>
+  );
+}
+```
+
+## Trigger Notification
+
+```tsx
+import { notifin } from "@khencahyo13/notifin";
+
+notifin.success("Profile updated");
+```
+
+Lihat detail API di [API Reference](/docs/api).

@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import type { HomeViewProps } from "@/pages/home/types";
 import { FC, memo } from "react";
+import Link from 'next/link';
 
 const HomeView: FC<HomeViewProps> = ({
     data,
@@ -36,18 +37,18 @@ const HomeView: FC<HomeViewProps> = ({
                     </CardHeader>
                     <CardContent className="flex flex-wrap gap-3">
                         <Button asChild>
-                            <a
+                            <Link
                                 href={data.packageLink.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 {data.packageLink.label}
-                            </a>
+                            </Link>
                         </Button>
                         <Button asChild variant="outline">
-                            <a href={data.docsLink.href} target="_blank" rel="noopener noreferrer">
+                            <Link href={data.docsLink.href} target="_blank" rel="noopener noreferrer">
                                 {data.docsLink.label}
-                            </a>
+                            </Link>
                         </Button>
                     </CardContent>
                 </Card>
