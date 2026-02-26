@@ -22,8 +22,8 @@ export interface HomeData {
 
 export interface HomeViewProps {
     data: HomeData;
-    locale: "id" | "en";
-    theme: "light" | "dark";
+    locale: 'id' | 'en';
+    theme: 'light' | 'dark';
     onToggleLocale: () => void;
     onToggleTheme: () => void;
     onErrorDemo: () => void;

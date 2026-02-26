@@ -41,18 +41,18 @@ export const metadata: Metadata = {
             'x-default': '/id',
         },
     },
-  openGraph: {
+    openGraph: {
         type: 'website',
         siteName: siteConfig.name,
         title: siteConfig.name,
         description: siteConfig.description,
         url: siteConfig.url,
-  },
-  icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-  },
-  twitter: {
+    },
+    icons: {
+        icon: '/icon.svg',
+        shortcut: '/icon.svg',
+    },
+    twitter: {
         card: 'summary_large_image',
         title: siteConfig.name,
         description: siteConfig.description,

@@ -62,7 +62,10 @@ const Home = ({ locale }: { locale: AppLocale }) => {
 
     const toggleLocale = useCallback(() => {
         const nextLocale = locale === 'id' ? 'en' : 'id';
-        const nextPath = pathname?.replace(/^\/(id|en)(?=\/|$)/, `/${nextLocale}`);
+        const nextPath = pathname?.replace(
+            /^\/(id|en)(?=\/|$)/,
+            `/${nextLocale}`
+        );
 
         router.push(nextPath || `/${nextLocale}`);
     }, [locale, pathname, router]);

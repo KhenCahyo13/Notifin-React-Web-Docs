@@ -44,15 +44,15 @@ const HomeView: FC<HomeViewProps> = ({
                 >
                     <Languages />
                 </Button>
-                    <Button
-                        onClick={onToggleTheme}
-                        variant="outline"
-                        size="icon"
-                        aria-label="Toggle theme"
-                    >
-                        <Moon />
-                    </Button>
-                </div>
+                <Button
+                    onClick={onToggleTheme}
+                    variant="outline"
+                    size="icon"
+                    aria-label="Toggle theme"
+                >
+                    <Moon />
+                </Button>
+            </div>
 
             <Card>
                 <CardHeader className="gap-4">
@@ -159,6 +159,6 @@ const HomeView: FC<HomeViewProps> = ({
             </footer>
         </main>
     </div>
-)
+);
 
 export default memo(HomeView);
