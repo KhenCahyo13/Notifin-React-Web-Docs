@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Notifin Web
 
-## Getting Started
+Landing + documentation website for [`@khencahyo13/notifin-react`](https://www.npmjs.com/package/@khencahyo13/notifin-react).
 
-First, run the development server:
+## Stack
+
+- Next.js (App Router)
+- Nextra + `nextra-theme-docs` (docs pages)
+- `next-intl` (locale routing: `id`, `en`)
+- `next-themes` (light/dark theme sync)
+- Tailwind CSS v4 + shadcn/ui components
+
+## Features
+
+- Home showcase with live demo buttons for Notifin.
+- Locale-aware routes:
+  - Home: `/id`, `/en`
+  - Docs: `/id/docs`, `/en/docs`
+- SEO setup:
+  - `robots.txt` via `app/robots.ts`
+  - `sitemap.xml` via `app/sitemap.ts`
+  - per-locale metadata/canonical/hreflang
+- Custom brand mark for light/dark theme.
+
+## Run Locally
+
+Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000).  
+Root path redirects to `/id`.
 
-## Learn More
+## Environment
 
-To learn more about Next.js, take a look at the following resources:
+Set site URL for canonical/sitemap/OG metadata:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+If not set, app falls back to `http://localhost:3000`.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```txt
+app/
+  [locale]/
+    page.tsx                # Home route per locale
+    docs/
+      layout.tsx
+      [[...mdxPath]]/page.tsx
+  layout.tsx
+  page.tsx                  # Redirect to /id
+  robots.ts
+  sitemap.ts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+content/
+  id/docs/*                 # Indonesian docs content
+  en/docs/*                 # English docs content
+
+pages/home/
+  index.tsx                 # Container (logic)
+  view.tsx                  # Presentational UI
+  data.ts                   # Locale data
+```
+
+## Scripts
+
+```bash
+pnpm dev
+pnpm build
+pnpm start
+pnpm lint
+pnpm format
+```
