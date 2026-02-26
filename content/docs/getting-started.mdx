@@ -8,9 +8,9 @@ description: Instalasi dan setup awal Notifin di aplikasi React.
 ## Install
 
 ```bash
-pnpm add @khencahyo13/notifin
-# atau npm i @khencahyo13/notifin
-# atau yarn add @khencahyo13/notifin
+pnpm add @khencahyo13/notifin-react
+# atau npm i @khencahyo13/notifin-react
+# atau yarn add @khencahyo13/notifin-react
 ```
 
 Peer dependency:
@@ -23,7 +23,7 @@ Peer dependency:
 `<Notifin />` harus dimount agar semua pemanggilan API `notifin.*` bisa dirender.
 
 ```tsx
-import { Notifin } from "@khencahyo13/notifin";
+import { Notifin } from "@khencahyo13/notifin-react";
 
 export default function AppLayout() {
   return (
@@ -38,7 +38,7 @@ export default function AppLayout() {
 ## 2) Trigger Notification dari Mana Saja
 
 ```tsx
-import { notifin } from "@khencahyo13/notifin";
+import { notifin } from "@khencahyo13/notifin-react";
 
 notifin("Saved draft");
 notifin.success("Profile updated");

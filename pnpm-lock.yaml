@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      '@khencahyo13/notifin':
-        specifier: ^1.2.0
-        version: 1.2.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@khencahyo13/notifin-react':
+        specifier: ^1.2.1
+        version: 1.2.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -540,8 +540,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@khencahyo13/notifin@1.2.0':
-    resolution: {integrity: sha512-tYqMfdc+bu+hFbZFgxeM+3bRA5R8rWf9xMW/SvX1DP6WGqTNyfsm9sBUMssVQoK3SKoVn0U1NgcLpbyDgnlLDQ==}
+  '@khencahyo13/notifin-react@1.2.1':
+    resolution: {integrity: sha512-6Ru+7SelQkNvwo+odozmFltNq7FkwTlpr30U4noC39Bz5CL8vLEm4MWDN0qcyU9TrM2JwhlBI1G2ESAfpqdG9Q==}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
@@ -5618,7 +5618,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@khencahyo13/notifin@1.2.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@khencahyo13/notifin-react@1.2.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@radix-ui/react-alert-dialog': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@radix-ui/react-visually-hidden': 1.2.4(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)

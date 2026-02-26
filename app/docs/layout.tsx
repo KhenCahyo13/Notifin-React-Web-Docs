@@ -19,7 +19,7 @@ export default async function DocsLayout({
                 <Navbar
                     logo={
                         <p className="font-semibold">
-                            Notifin
+                            Notifin React
                             <span className="text-sm text-muted-foreground">
                                 {' '}
                                 by Khen Cahyo

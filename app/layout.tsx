@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: 'Notifin - Home Showcase',
+    title: 'Notifin React',
     description:
-        'Landing page showcase untuk @khencahyo13/notifin, function-first alert dialog library for React.',
+        '@khencahyo13/notifin-react, function-first alert dialog library for React.',
 };
 
 export default function RootLayout({

@@ -1,12 +1,12 @@
 import type { HomeData } from '@/pages/home/types';
 
 export const homeData: HomeData = {
-    badge: '@khencahyo13/notifin',
+    badge: '@khencahyo13/notifin-react',
     headline: 'Alert dialog React yang cepat, tegas, dan mudah dipanggil.',
     subheadline:
         'Halaman ini menampilkan gambaran singkat Notifin, sementara referensi API dan tutorial lengkap tersedia di Docs.',
     packageLink: {
-        href: 'https://www.npmjs.com/package/@khencahyo13/notifin',
+        href: 'https://www.npmjs.com/package/@khencahyo13/notifin-react',
         label: 'Lihat Package',
     },
     docsLink: {
@@ -30,7 +30,7 @@ export const homeData: HomeData = {
                 'Kelola antrean dialog dan ikat state async lewat notifin.promise().',
         },
     ],
-    usageSnippet: `import { Notifin, notifin } from "@khencahyo13/notifin";
+    usageSnippet: `import { Notifin, notifin } from "@khencahyo13/notifin-react";
 
 export default function App() {
   return (

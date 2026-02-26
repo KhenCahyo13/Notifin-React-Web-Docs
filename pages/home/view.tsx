@@ -1,6 +1,6 @@
 'use client';
 
-import { Notifin } from '@khencahyo13/notifin';
+import { Notifin } from '@khencahyo13/notifin-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';

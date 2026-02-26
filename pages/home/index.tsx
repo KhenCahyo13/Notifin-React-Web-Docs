@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react';
 
-import { notifin } from '@khencahyo13/notifin';
+import { notifin } from '@khencahyo13/notifin-react';
 
 import { homeData } from '@/pages/home/data';
 import HomeView from '@/pages/home/view';
