@@ -1,0 +1,98 @@
+---
+title: Custom Theme
+description: Override tampilan dialog, icon tone, dan per-scheme theme.
+---
+
+# Custom Theme
+
+Gunakan prop `theme` pada `<Notifin />` untuk override visual.
+
+```tsx
+import { Notifin } from "@khencahyo13/notifin";
+
+<Notifin
+  theme={{
+    dialogToneClasses: {
+      success: "border-emerald-300 bg-emerald-50 text-emerald-950",
+      error: "border-rose-300 bg-rose-50 text-rose-950",
+    },
+    iconToneClasses: {
+      success: "border-emerald-400 bg-emerald-100 text-emerald-700",
+      error: "border-rose-400 bg-rose-100 text-rose-700",
+    },
+  }}
+/>;
+```
+
+## Theme Keys
+
+### `dialogToneClasses`
+
+Class map untuk container dialog per type:
+
+- `default`
+- `success`
+- `error`
+- `warning`
+- `info`
+- `loading`
+
+### `iconToneClasses`
+
+Class map untuk wrapper icon per type (key sama seperti di atas).
+
+### `icons`
+
+Map komponen icon custom per type. Detail di [Custom Icons](/docs/custom-icons).
+
+### `schemes`
+
+Override khusus mode:
+
+- `schemes.light`
+- `schemes.dark`
+
+Format:
+
+```ts
+{
+  className?: string
+  dialogToneClasses?: Partial<NotifinThemeClassMap>
+  iconToneClasses?: Partial<NotifinThemeClassMap>
+}
+```
+
+## Per-Scheme Example
+
+```tsx
+<Notifin
+  colorScheme="system"
+  theme={{
+    schemes: {
+      light: {
+        dialogToneClasses: {
+          error: "border-rose-300 bg-white text-rose-900",
+        },
+        iconToneClasses: {
+          error: "border-rose-400 bg-rose-50 text-rose-700",
+        },
+      },
+      dark: {
+        className: "ring-1 ring-white/10",
+        dialogToneClasses: {
+          error: "border-rose-900 bg-zinc-900 text-rose-200",
+        },
+        iconToneClasses: {
+          error: "border-rose-800 bg-rose-950/40 text-rose-300",
+        },
+      },
+    },
+  }}
+/>
+```
+
+## Tips
+
+- Mulai dari override parsial dulu, tidak perlu override semua type.
+- Jaga kontras teks vs background agar tetap accessible.
+- Uji pada light + dark bila pakai `colorScheme="system"`.

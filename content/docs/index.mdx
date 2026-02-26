@@ -1,15 +1,49 @@
 ---
 title: Notifin Docs
-description: Dokumentasi resmi untuk @khencahyo13/notifin.
+description: Dokumentasi lengkap penggunaan @khencahyo13/notifin.
 ---
 
 # Notifin
 
-`@khencahyo13/notifin` adalah function-first alert dialog library untuk React.
+`@khencahyo13/notifin` adalah function-first alert dialog library untuk React, dibangun di atas Radix Alert Dialog.
 
-## Isi Dokumentasi
+Library ini cocok untuk skenario konfirmasi penting atau feedback action yang butuh fokus pengguna, dengan API pemanggilan yang sederhana.
+
+## Quick Start
+
+```tsx
+import { Notifin, notifin } from "@khencahyo13/notifin";
+
+export default function AppLayout() {
+  return (
+    <>
+      <Notifin />
+      <button
+        onClick={() =>
+          notifin.success("Profile updated", {
+            description: "Perubahan sudah disimpan.",
+          })
+        }
+      >
+        Save
+      </button>
+    </>
+  );
+}
+```
+
+## Daftar Materi
 
 - **Getting Started**: instalasi, setup host, dan contoh pertama.
-- **API Reference**: daftar method `notifin` dan props `Notifin`.
+- **Basic Usage**: pola penggunaan harian.
+- **Notifin Component**: semua props host (`colorScheme`, `motion`, `theme`, dsb).
+- **Show Options**: detail opsi dialog (`description`, `action`, `cancel`, dll).
+- **Methods API**: method `notifin.*`, `update`, `dismiss`.
+- **Promise Helper**: pola async dengan `notifin.promise`.
+- **Custom Theme**: override tone, scheme light/dark, dan class mapping.
+- **Custom Icons**: ganti icon default per type.
+- **Recipes**: contoh implementasi siap pakai.
+- **Troubleshooting**: masalah umum dan solusinya.
+- **Type Reference**: ringkasan tipe utama.
 
-Lanjut ke [Getting Started](/docs/getting-started).
+Mulai dari [Getting Started](/docs/getting-started).

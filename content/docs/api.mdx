@@ -1,27 +1,100 @@
 ---
-title: API Reference
-description: Ringkasan API utama Notifin.
+title: Type Reference
+description: Ringkasan tipe TypeScript utama Notifin.
 ---
 
-# API Reference
+# Type Reference
 
-## `notifin`
+### `NotifinType`
 
-- `notifin(title, options?)`
-- `notifin.success(title, options?)`
-- `notifin.error(title, options?)`
-- `notifin.warning(title, options?)`
-- `notifin.info(title, options?)`
-- `notifin.loading(title, options?)`
-- `notifin.update(id, options)`
-- `notifin.dismiss(id?)`
-- `notifin.promise(promise, messages)`
+```ts
+type NotifinType =
+  | "default"
+  | "error"
+  | "info"
+  | "loading"
+  | "success"
+  | "warning";
+```
 
-## `Notifin` Props
+### `NotifinFn`
 
-- `colorScheme?: "system" | "light" | "dark"`
-- `motion?: "subtle" | "slide" | "scale" | "bounce" | "none"`
-- `showQueueCount?: boolean`
-- `theme?: NotifinThemeConfig`
+```ts
+interface NotifinFn {
+  (title: string, options?: NotifinShowOptions): string;
+  success(title: string, options?: NotifinShowOptions): string;
+  error(title: string, options?: NotifinShowOptions): string;
+  warning(title: string, options?: NotifinShowOptions): string;
+  info(title: string, options?: NotifinShowOptions): string;
+  loading(title: string, options?: NotifinShowOptions): string;
+  update(id: string, options: NotifinUpdateOptions): void;
+  dismiss(id?: string): void;
+  promise<T>(
+    promise: Promise<T>,
+    messages: NotifinPromiseMessages<T>
+  ): Promise<T>;
+}
+```
 
-Untuk contoh lanjutan, cek README package atau dokumentasi lanjutan yang akan ditambahkan di halaman ini.
+### `NotifinShowOptions`
+
+```ts
+interface NotifinShowOptions {
+  action?: NotifinAction;
+  allowEscapeClose?: boolean;
+  cancel?: NotifinAction;
+  description?: string;
+  dismissible?: boolean;
+  duration?: number;
+  id?: string;
+  onDismiss?: () => void;
+  title?: string;
+}
+```
+
+### `NotifinUpdateOptions`
+
+```ts
+interface NotifinUpdateOptions extends Partial<NotifinShowOptions> {
+  title?: string;
+  type?: NotifinType;
+}
+```
+
+### `NotifinPromiseMessages<T>`
+
+```ts
+interface NotifinPromiseMessages<TData = unknown> {
+  loading: NotifinShowOptions | string;
+  success: ((data: TData) => NotifinShowOptions | string) | string;
+  error: ((error: unknown) => NotifinShowOptions | string) | string;
+}
+```
+
+### `NotifinProps`
+
+```ts
+interface NotifinProps {
+  colorScheme?: "system" | "light" | "dark";
+  motion?: "subtle" | "slide" | "scale" | "bounce" | "none";
+  showQueueCount?: boolean;
+  theme?: NotifinThemeConfig;
+}
+```
+
+### `NotifinThemeConfig`
+
+```ts
+interface NotifinThemeConfig {
+  dialogToneClasses?: Partial<NotifinThemeClassMap>;
+  iconToneClasses?: Partial<NotifinThemeClassMap>;
+  icons?: Partial<NotifinThemeIcons>;
+  schemes?: Partial<Record<"light" | "dark", NotifinSchemeThemeConfig>>;
+}
+```
+
+Untuk penggunaan praktisnya, lihat:
+
+- [Methods API](/docs/methods)
+- [Show Options](/docs/show-options)
+- [Custom Theme](/docs/custom-theme)

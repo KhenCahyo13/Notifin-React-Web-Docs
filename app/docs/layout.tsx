@@ -17,14 +17,14 @@ export default async function DocsLayout({
             docsRepositoryBase="https://github.com/KhenCahyo13/Notifin/tree/main"
             navbar={
                 <Navbar
-                    logo={<strong>Notifin</strong>}
+                    logo={
+                        <p className='font-semibold'>
+                            Notifin
+                            <span className='text-sm text-muted-foreground'> by Khen Cahyo</span>
+                        </p>
+                    }
                     projectLink="https://github.com/KhenCahyo13/Notifin"
                 />
-            }
-            footer={
-                <Footer>
-                    <span>by Khen Cahyo</span>
-                </Footer>
             }
             sidebar={{
                 autoCollapse: true,

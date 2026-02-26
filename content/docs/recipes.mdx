@@ -1,0 +1,80 @@
+---
+title: Recipes
+description: Contoh pola implementasi Notifin untuk use case umum.
+---
+
+# Recipes
+
+## 1) Confirm Delete Dengan Action
+
+```tsx
+notifin.warning("Delete this item?", {
+  description: "This action cannot be undone.",
+  action: {
+    label: "Delete",
+    onClick: async () => {
+      await deleteItem();
+      notifin.success("Item deleted");
+    },
+  },
+  cancel: {
+    label: "Cancel",
+  },
+});
+```
+
+## 2) Loading Lalu Update Manual
+
+```tsx
+const id = notifin.loading("Uploading file...", {
+  dismissible: false,
+});
+
+try {
+  await uploadFile(file);
+  notifin.update(id, {
+    type: "success",
+    title: "Upload complete",
+    description: "File berhasil diunggah.",
+    dismissible: true,
+    duration: 1800,
+  });
+} catch (error) {
+  notifin.update(id, {
+    type: "error",
+    title: "Upload failed",
+    description: error instanceof Error ? error.message : "Unknown error",
+    dismissible: true,
+  });
+}
+```
+
+## 3) Promise Wrapper Untuk Form Submit
+
+```tsx
+await notifin.promise(submitForm(payload), {
+  loading: "Submitting form...",
+  success: "Form submitted",
+  error: "Failed to submit form",
+});
+```
+
+## 4) ID Manual Untuk Menutup Dialog Tertentu
+
+```tsx
+const customId = "sync-task";
+
+notifin.loading("Sync running...", {
+  id: customId,
+  dismissible: false,
+});
+
+// lalu di tempat lain
+notifin.dismiss(customId);
+```
+
+## 5) Matikan Animasi untuk Kebutuhan Tertentu
+
+```tsx
+<Notifin motion="none" />
+```
