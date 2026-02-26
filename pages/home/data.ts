@@ -1,33 +1,33 @@
-import type { HomeData } from "@/pages/home/types";
+import type { HomeData } from '@/pages/home/types';
 
 export const homeData: HomeData = {
-    badge: "@khencahyo13/notifin",
-    headline: "Alert dialog React yang cepat, tegas, dan mudah dipanggil.",
+    badge: '@khencahyo13/notifin',
+    headline: 'Alert dialog React yang cepat, tegas, dan mudah dipanggil.',
     subheadline:
-        "Halaman ini menampilkan gambaran singkat Notifin, sementara referensi API dan tutorial lengkap tersedia di Docs.",
+        'Halaman ini menampilkan gambaran singkat Notifin, sementara referensi API dan tutorial lengkap tersedia di Docs.',
     packageLink: {
-        href: "https://www.npmjs.com/package/@khencahyo13/notifin",
-        label: "Lihat Package",
+        href: 'https://www.npmjs.com/package/@khencahyo13/notifin',
+        label: 'Lihat Package',
     },
-  docsLink: {
-    href: "/docs",
-    label: "Buka Docs",
-  },
+    docsLink: {
+        href: '/docs',
+        label: 'Buka Docs',
+    },
     features: [
         {
-            title: "Function-first API",
+            title: 'Function-first API',
             description:
-                "Panggil notif dari mana saja dengan satu baris, tanpa setup rumit.",
+                'Panggil notif dari mana saja dengan satu baris, tanpa setup rumit.',
         },
         {
-            title: "Theme & Motion Ready",
+            title: 'Theme & Motion Ready',
             description:
-                "Mendukung dark/light scheme, motion preset, dan override tampilan.",
+                'Mendukung dark/light scheme, motion preset, dan override tampilan.',
         },
         {
-            title: "Queue + Promise Helper",
+            title: 'Queue + Promise Helper',
             description:
-                "Kelola antrean dialog dan ikat state async lewat notifin.promise().",
+                'Kelola antrean dialog dan ikat state async lewat notifin.promise().',
         },
     ],
     usageSnippet: `import { Notifin, notifin } from "@khencahyo13/notifin";
@@ -42,6 +42,6 @@ export default function App() {
     </>
   );
 }`,
-    quickStartLabel: "Quick Start",
-    demoLabel: "Live Demo",
+    quickStartLabel: 'Quick Start',
+    demoLabel: 'Live Demo',
 };

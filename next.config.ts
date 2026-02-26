@@ -1,10 +1,10 @@
-import type { NextConfig } from "next";
-import nextra from "nextra";
+import type { NextConfig } from 'next';
+import nextra from 'nextra';
 
 const withNextra = nextra({
-  search: {
-    codeblocks: false,
-  },
+    search: {
+        codeblocks: false,
+    },
 });
 
 const nextConfig: NextConfig = {};

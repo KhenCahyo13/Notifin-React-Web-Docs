@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { Notifin } from "@khencahyo13/notifin";
+import { Notifin } from '@khencahyo13/notifin';
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import type { HomeViewProps } from "@/pages/home/types";
-import { FC, memo } from "react";
+} from '@/components/ui/card';
+import type { HomeViewProps } from '@/pages/home/types';
+import { FC, memo } from 'react';
 import Link from 'next/link';
 
 const HomeView: FC<HomeViewProps> = ({
@@ -28,7 +28,10 @@ const HomeView: FC<HomeViewProps> = ({
             <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-10 md:px-10">
                 <Card>
                     <CardHeader className="gap-4">
-                        <Badge variant="outline" className="uppercase text-muted-foreground">
+                        <Badge
+                            variant="outline"
+                            className="uppercase text-muted-foreground"
+                        >
                             {data.badge}
                         </Badge>
                         <CardTitle className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-neutral-900 md:text-5xl">
@@ -46,7 +49,11 @@ const HomeView: FC<HomeViewProps> = ({
                             </Link>
                         </Button>
                         <Button asChild variant="outline">
-                            <Link href={data.docsLink.href} target="_blank" rel="noopener noreferrer">
+                            <Link
+                                href={data.docsLink.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 {data.docsLink.label}
                             </Link>
                         </Button>
@@ -80,7 +87,7 @@ const HomeView: FC<HomeViewProps> = ({
                         </CardContent>
                     </Card>
 
-                    <Card className='h-fit'>
+                    <Card className="h-fit">
                         <CardHeader>
                             <CardDescription className="text-[12px] font-semibold tracking-[0.14em] uppercase">
                                 {data.demoLabel}
@@ -110,7 +117,7 @@ const HomeView: FC<HomeViewProps> = ({
                 </section>
 
                 <footer className="text-center text-sm text-muted-foreground">
-                    by <span className='font-medium'>Khen Cahyo</span>
+                    by <span className="font-medium">Khen Cahyo</span>
                 </footer>
             </main>
         </div>
